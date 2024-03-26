@@ -29,6 +29,7 @@ namespace OnionBlogProject.Infrastructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //optionsBuilder.UseSqlServer("Server=G™RKEMH; Database=OnionBlogProjectDb; Trusted_Connection=true");
             optionsBuilder.UseSqlServer("Server=G™RKEMH; Database=OnionBlogProjectDb; Uid=sa; Pwd=123;");
 
         }

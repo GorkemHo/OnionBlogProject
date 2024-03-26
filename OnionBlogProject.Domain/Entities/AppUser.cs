@@ -13,7 +13,7 @@ namespace OnionBlogProject.Domain.Entities
     public class AppUser : IdentityUser, IBaseEntity
     {
         public string ImagePath { get; set; }
-        [NotMapped] // Db'de Görünmesin.
+        [NotMapped] // Db'de Görünmesin. Çünkü interface olduğu için hata alabiliriz.
         public IFormFile UploadPath { get; set; } // Using AspNetCore.Http.Features
        
         //FROM BASE ENTITY

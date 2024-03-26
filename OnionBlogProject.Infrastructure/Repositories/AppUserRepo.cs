@@ -13,13 +13,13 @@ namespace OnionBlogProject.Infrastructure.Repositories
 {
     public class AppUserRepo : BaseRepo<AppUser>, IAppUserRepo
     {
-        UserManager<AppUser> _userManager;
+        UserManager<AppUser> _userManager; //UserManager Identity User için doğal bir repository olarak kabul edilebilir. Crud işlemlerini kendi bünyesinde yapar.
         public AppUserRepo(AppDbContext context, DbSet<AppUser> table, UserManager<AppUser> userManager) : base(context, table)
         {
             _userManager = userManager;
         }
 
-        public override Task Create(AppUser entity)
+        public override Task Create(AppUser entity) // Burda aslında adapter design pattern kullanmış olduk. Manager zaten kaydetme işlemi yapıyor BaseRepoya bu görevi vermeye gerek yok. Sadece savechanges yapabilmek için base.Create metoduna yönlendirme yaptık.
         {
             _userManager.CreateAsync(entity);
 
