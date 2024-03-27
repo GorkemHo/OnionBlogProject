@@ -51,7 +51,7 @@ namespace OnionBlogProject.Application.Services.AuthorService
         {
            var author = await repo.GetDeault(x => x.Id.Equals(id));
 
-            if(author is not not null)
+            if(author is not null)
             {
                 author.DeleteDate = DateTime.Now;
                 author.Status = Status.Passive;

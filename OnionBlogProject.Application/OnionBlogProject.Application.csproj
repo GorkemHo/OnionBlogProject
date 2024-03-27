@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Ioc\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.28" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.28" />
@@ -19,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnionBlogProject.Domain\OnionBlogProject.Domain.csproj" />
+    <ProjectReference Include="..\OnionBlogProject.Infrastructure\OnionBlogProject.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
