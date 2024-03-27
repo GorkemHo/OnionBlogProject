@@ -160,7 +160,7 @@ namespace OnionBlogProject.Application.Services.PostService
             return posts;
         }
 
-        public async Task<List<GetPostsVm>> GetPostsForMembers(int id)
+        public async Task<List<GetPostsVm>> GetPostsForMembers()
         {
             var posts = await _postRepo.GetFilteredList(select: x => new GetPostsVm
             {

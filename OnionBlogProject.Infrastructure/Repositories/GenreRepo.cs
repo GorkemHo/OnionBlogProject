@@ -12,7 +12,7 @@ namespace OnionBlogProject.Infrastructure.Repositories
 {
     public class GenreRepo : BaseRepo<Genre>, IGenreRepo
     {
-        public GenreRepo(AppDbContext context, DbSet<Genre> table) : base(context, table)
+        public GenreRepo(AppDbContext context) : base(context)
         {
         }
     }

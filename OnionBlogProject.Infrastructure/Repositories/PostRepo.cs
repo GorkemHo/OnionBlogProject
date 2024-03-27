@@ -12,7 +12,7 @@ namespace OnionBlogProject.Infrastructure.Repositories
 {
     public class PostRepo : BaseRepo<Post>, IPostRepo
     {
-        public PostRepo(AppDbContext context, DbSet<Post> table) : base(context, table)
+        public PostRepo(AppDbContext context) : base(context)
         {
         }
     }

@@ -4,32 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OnionBlogProject.UI</title>
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/media/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/media/css/adminlte.min.css" />
+    <!-- Google Font: Source-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnionBlogProject.UI.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnionBlogProject.UI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="hold-transition layout-top-nav">
+    <div class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="navbar-item">
+                    <a class="btn btn-sm btn-warning" asp-controller="Account" asp-action="ProfileDetails" asp-route-userName="@User.Identity.Name">Kullanıcı Profili</a>
+                </li>
+                <li class="navbar-item">
+                    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Edit" asp-route-userName="@User.Identity.Name">Profili Güncelle</a>
+                </li>
+                <li class="navbar-item">
+                    <a class="btn btn-sm btn-danger" asp-controller="Account" asp-action="LogOut">@User.Identity.Name, Log Out Çıkış Yap</a>
+                </li>
+            }
+            else
+            {
+                <li class="navbar-item">
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="LogIn">LogIn</a>
+                </li>
+                <li class="navbar-item">
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+                </li>
+            }
+        </ul>
+    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -41,6 +55,12 @@
             &copy; 2024 - OnionBlogProject.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    <script src="~/media/js/jquery.min.js"></script>
+    <script src="~/media/js/bootstrap.bundle.min.js"></script>
+    <script src="~/media/js/adminlte.min.js"></script>
+    <script src="~/media/js/demo.js"></script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

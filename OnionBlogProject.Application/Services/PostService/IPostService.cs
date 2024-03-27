@@ -16,7 +16,7 @@ namespace OnionBlogProject.Application.Services.PostService
         Task<List<PostVm>> GetPosts();
         Task<PostDetailsVm> GetPostDetailsVm(int id);
         Task<UpdatePostDto> GetById(int id);
-        Task<List<GetPostsVm>> GetPostsForMembers(int id); // Kişilerin postlarını döndür.
+        Task<List<GetPostsVm>> GetPostsForMembers(); // Kişilerin postlarını döndür.
         Task<CreatePostDto> CreatePost(); // Post Create işleminde ilk adımda View'a giderken, Genre ve Author listesini doldurmak için bu metodu kullanacağız.
     }
 }

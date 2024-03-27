@@ -14,7 +14,7 @@ namespace OnionBlogProject.Infrastructure.Repositories
     public class AppUserRepo : BaseRepo<AppUser>, IAppUserRepo
     {
         UserManager<AppUser> _userManager; //UserManager Identity User için doğal bir repository olarak kabul edilebilir. Crud işlemlerini kendi bünyesinde yapar.
-        public AppUserRepo(AppDbContext context, DbSet<AppUser> table, UserManager<AppUser> userManager) : base(context, table)
+        public AppUserRepo(AppDbContext context, UserManager<AppUser> userManager) : base(context)
         {
             _userManager = userManager;
         }

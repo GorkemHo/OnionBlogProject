@@ -17,7 +17,7 @@ namespace OnionBlogProject.Infrastructure.Repositories
         private readonly AppDbContext _context;
         protected DbSet<T> _table;
 
-        public BaseRepo(AppDbContext context, DbSet<T> table)
+        public BaseRepo(AppDbContext context)
         {
             _context = context;
             _table = _context.Set<T>();

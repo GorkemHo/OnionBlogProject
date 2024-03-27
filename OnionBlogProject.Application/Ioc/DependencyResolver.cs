@@ -35,6 +35,7 @@ namespace OnionBlogProject.Application.Ioc
                 var context = c.Resolve<IComponentContext>();
                 var config = context.Resolve<MapperConfiguration>();
                 return config.CreateMapper(context.Resolve);
+
             })
                 .As<IMapper>()
                 .InstancePerLifetimeScope();

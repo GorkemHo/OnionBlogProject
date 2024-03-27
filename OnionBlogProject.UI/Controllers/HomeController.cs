@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnionBlogProject.Application.Services.PostService;
 using OnionBlogProject.UI.Models;
 using System.Diagnostics;
 
@@ -6,27 +7,19 @@ namespace OnionBlogProject.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IPostService _postService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPostService postService)
         {
-            _logger = logger;
+            _postService = postService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var posts = await _postService.GetPostsForMembers();
+            return View(posts);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

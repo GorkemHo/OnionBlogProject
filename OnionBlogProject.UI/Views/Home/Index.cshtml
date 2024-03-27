@@ -1,8 +1,69 @@
-﻿@{
+﻿@model List<GetPostsVm>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h4>Başlık</h4>
+
+<div class="container mt-2">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-8">
+            <div class="card card-wiget mt-3">
+                <!--USER BLOCK -->
+                <div class="card-header">
+                    <div class="user-block">
+                        <img class="img-circle" src="@item.UserImagePath" alt="User Image" />
+                        <span class="username">
+                            <a href="#">@item.FullName</a>
+                            <span class="description">
+                                Paylaşım Zamanı - @item.CreateDate.ToShortDateString();
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <!--USER BLOCK -->
+                <!--CARD HEADER -->
+                <div class="card-body">
+                    <img class="img-fluid pad" src="@item.ImagePath" alt="Photo" />
+                    <br />
+                    <h4>@item.Title</h4>
+                    <p class="card-text">@item.Content</p>
+                    <button class="btn btn-default btn-sm" type="button">
+                        <i class="fas fa-share">Share / Paylaş</i>
+                    </button>
+                    <button class="btn btn-default btn-sm">
+                        <i class="far fa-thumbs-up">Like / Beğen</i>
+                    </button>
+                </div>
+                <!--CARD BODY -->
+                <div class="card-footer card-comment">
+                    <div class="card-comment">
+                        <img class="img-circle img-sm" src="~/images/1941acab-4409-4e7c-ad63-47459d6605df.jpg" alt="Photo" />
+                        <div class="comment-text">
+                            <span class="username">
+                                Maria Gonzales
+                                <span class="text-muted float-end">
+                                    8.03 PM Today
+                                </span>
+                            </span>
+                            Lorem ipsum sit amed...
+                        </div>
+                    </div>
+                </div>
+                <!--CARD Footer -->
+                <div class="card-footer">
+                    <form action="#" method="post">
+                        <img class="img-fluid img-circle" src="~/images/3285ddbf-42df-4a2b-8c6d-2245b45cd57e.jpg" alt="Text" />
+                        <div class="img-push">
+                            <input type="text" class=" form-control form-control-sm" placeholder="Yeni Bir Gönderi Oluşturmak İçin Tıklayınız."/>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
 </div>

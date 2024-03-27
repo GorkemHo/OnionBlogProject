@@ -12,7 +12,7 @@ namespace OnionBlogProject.Infrastructure.Repositories
 {
     public class AuthorRepo : BaseRepo<Author>, IAuthorRepo
     {
-        public AuthorRepo(AppDbContext context, DbSet<Author> table) : base(context, table)
+        public AuthorRepo(AppDbContext context) : base(context)
         {
         }
     }
