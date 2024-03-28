@@ -8,55 +8,57 @@
 
 @model OnionBlogProject.Application.Models.Dtos.UserDto.UpdateProfileDto
 
-<div class="col-sm-6">
-    <div class="card-header">
-        <h4 class="card-title">Giriş Yap</h4>
-    </div>
-    <form asp-action="Update" method="post" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-        <input type="hidden" asp-for="Id" />
-        <div class="card-body">
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+    <div class="row align-content-center">
+        <div class="col-sm-6" style="margin-top:100px ;text-align:center">
+            <div class="card-header">
+                <h4 class="card-title">Giriş Yap</h4>
             </div>
+            <form asp-action="Update" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                <input type="hidden" asp-for="Id" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
-                <label asp-for="ConfirmedPassword" class="control-label"></label>
-                <input asp-for="ConfirmedPassword" class="form-control" />
-                <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmedPassword" class="control-label"></label>
+                        <input asp-for="ConfirmedPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
-                <label asp-for="UploadPath" class="control-label"></label>
-                <input asp-for="UploadPath" type="file" class="form-control" />
-                <span asp-validation-for="UploadPath" class="text-danger"></span>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="ImagePath" class="control-label"></label>
+                        <input asp-for="ImagePath" class="form-control" />
+                        <span asp-validation-for="ImagePath" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-success float-end mr-2">Güncelle</button>
-                <a asp-action="Index" asp-controller="Home" class="btn-primary btn-sm float-end mr-2 ml-2">Ana Sayfa</a>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="UploadPath" class="control-label"></label>
+                        <input asp-for="UploadPath" type="file" class="form-control" />
+                        <span asp-validation-for="UploadPath" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success float-end mr-2">Güncelle</button>
+                        <a asp-action="Index" asp-controller="Home" class="btn-primary btn-sm float-end mr-2 ml-2">Ana Sayfa</a>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+    </div>

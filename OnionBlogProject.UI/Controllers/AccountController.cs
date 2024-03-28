@@ -49,21 +49,26 @@ namespace OnionBlogProject.UI.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             ViewData["returnUrl"] = returnUrl;
             return View();
         }
 
-        [HttpPost,AllowAnonymous]
+        [HttpPost, AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto loginDto, string returnUrl = "/")
         {
             if (ModelState.IsValid)
             {
                 var result = await _userService.Login(loginDto);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
+                    if (User.IsInRole("admin"))
+                        RedirectToAction("Index", "Home", new { area ="Admin"});
+                    else if (User.IsInRole("member"))
+                        RedirectToAction("Index", "Home", new { area = "Member" });
+
                     return RedirectToLocal(returnUrl);
                 }
 
@@ -80,7 +85,7 @@ namespace OnionBlogProject.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -93,7 +98,7 @@ namespace OnionBlogProject.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(UpdateProfileDto updateProfileDto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await _userService.UpdateUser(updateProfileDto);
                 TempData["Success"] = "Güncelleme İşlemi Başarıyla Gerçekleşti.";
@@ -107,9 +112,9 @@ namespace OnionBlogProject.UI.Controllers
 
         }
 
-        public IActionResult LogOut()
+        public async Task<IActionResult> Logout()
         {
-            _userService.Logout();
+            await _userService.Logout();
             return RedirectToAction("Index", "Home");
         }
     }

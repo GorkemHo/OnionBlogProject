@@ -4,62 +4,97 @@
     Layout = null;
 }
 
+
+
+
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BA Blog | Kayıt Ol</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/OnionBlogProject.UI.styles.css" asp-append-version="true" />
-
-    <title>Kayıt Ol</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/media/dist/css/adminlte.min.css">
 </head>
-<body>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-sm-3">
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a asp-controller="Home" asp-action="Index" class="h1"><b>BA</b>Blog</a>
             </div>
-            <div class="col-sm-6">
-                <h4 class="card-title">Kayıt Ol</h4>
+            <div class="card-body">
+                <p class="login-box-msg">Kayıt Ol</p>
+
+                <form asp-action="Register" method="post">
+                    <div class="input-group mb-3">
+                        <input asp-for="UserName" type="text" class="form-control" placeholder="UserName">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="ConfirmedPassword" type="password" class="form-control" placeholder="Retype password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @*<div class="col-8">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                    <label for="agreeTerms">
+                                        I agree to the <a href="#">terms</a>
+                                    </label>
+                                </div>
+                            </div>*@
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+
+                <a asp-action="Login" class="text-center">Zaten Üye misiniz? Giriş Yapın</a>
             </div>
-            <form asp-action="Register">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label asp-for="UserName"></label>
-                        <input asp-for="UserName" />
-                        <span asp-validation-for="UserName"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email"></label>
-                        <input asp-for="Email" />
-                        <span asp-validation-for="Email"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Password"></label>
-                        <input asp-for="Password" />
-                        <span asp-validation-for="Password"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ConfirmedPassword"></label>
-                        <input asp-for="ConfirmedPassword" />
-                        <span asp-validation-for="ConfirmedPassword"></span>
-                    </div>
-                    <div class="card-footer">
-                        <input type="submit" class="btn btn-success btn-sm float-end" />
-                        <a asp-action="Login" class="btn btn-primary float-end mr-2 ml-bg-opacity-25">Giriş Yap</a>
-                    </div>
-                </div>
-            </form>
-        </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
     </div>
-
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @*@await RenderSectionAsync("Scripts", required: false)*@
+    <!-- /.register-box -->
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/media/dist/js/adminlte.min.js"></script>
 </body>
 </html>
