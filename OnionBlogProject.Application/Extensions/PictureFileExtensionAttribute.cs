@@ -13,7 +13,8 @@ namespace OnionBlogProject.Application.Extensions
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             IFormFile file = value as IFormFile;
-
+            if(file != null)
+            {
             var extension = Path.GetExtension(file.FileName).ToLower();
 
             string[] extensions = { "jpg", "jpeg", "png" };
@@ -26,8 +27,11 @@ namespace OnionBlogProject.Application.Extensions
             }
             return ValidationResult.Success;
 
+            }
 
-            
+            return new ValidationResult("Null Değer geldi.");
+
+
         }
     }
 }

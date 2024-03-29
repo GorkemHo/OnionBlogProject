@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnionBlogProject.Application\OnionBlogProject.Application.csproj" />
+    <ProjectReference Include="..\OnionBlogProject.Infrastructure\OnionBlogProject.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

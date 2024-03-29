@@ -53,11 +53,12 @@ namespace OnionBlogProject.Application.Services.AppUserService
             var user = mapper.Map<AppUser>(model);
 
             var result = await userManager.CreateAsync(user, model.Password);
+            await userManager.AddToRoleAsync(user, "ADMIN");
 
             if (result.Succeeded)
             {
                 await signInManager.SignInAsync(user, false);
-
+                
             }
             return result;
         }
@@ -115,5 +116,13 @@ namespace OnionBlogProject.Application.Services.AppUserService
                 await repo.Update(user);
             }
         }
+
+        public async Task<bool> UserInRole(string userName,string role)
+        {
+            var user = await userManager.FindByNameAsync(userName);
+            bool isInRole = await userManager.IsInRoleAsync(user, role);
+            return isInRole;
+        }
+        
     }
 }

@@ -16,17 +16,13 @@ namespace OnionBlogProject.UI.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [AllowAnonymous]
         public IActionResult Register()
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -40,7 +36,7 @@ namespace OnionBlogProject.UI.Controllers
             }
 
             var result = await _userService.Register(registerDto);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
 
         }
 
@@ -64,10 +60,11 @@ namespace OnionBlogProject.UI.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (User.IsInRole("admin"))
-                        RedirectToAction("Index", "Home", new { area ="Admin"});
-                    else if (User.IsInRole("member"))
-                        RedirectToAction("Index", "Home", new { area = "Member" });
+
+                    if (await _userService.UserInRole(loginDto.UserName, "Admin"))
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                    else if (await _userService.UserInRole(loginDto.UserName, "Member"))
+                        return RedirectToAction("Index", "Home", new { area = "Member" });
 
                     return RedirectToLocal(returnUrl);
                 }

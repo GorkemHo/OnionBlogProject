@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnionBlogProject.Domain.Entities;
 using OnionBlogProject.Infrastructure.EntityTypeConfig;
@@ -12,10 +13,10 @@ namespace OnionBlogProject.Infrastructure.Context
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
-        public AppDbContext() // Migration oluştururken Hata almamak için boş bir constructor oluşturduk.
-        {
+        //public AppDbContext() // Migration oluştururken Hata almamak için boş bir constructor oluşturduk.
+        //{
             
-        }
+        //}
         public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : base(dbContextOptions)
         {
             
@@ -40,6 +41,21 @@ namespace OnionBlogProject.Infrastructure.Context
             builder.ApplyConfiguration(new AuthorConfig());
             builder.ApplyConfiguration(new GenreConfig());
             builder.ApplyConfiguration(new PostConfig());
+
+            builder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = "Admin",
+                Name = "Admin",
+                NormalizedName = "ADMIN",
+                ConcurrencyStamp = new Guid().ToString(),
+            }, new IdentityRole
+            {
+                Id = "Member",
+                Name = "Member",
+                NormalizedName = "MEMBER",
+                ConcurrencyStamp = new Guid().ToString(),
+            });
+
 
             base.OnModelCreating(builder);
         }

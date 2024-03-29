@@ -24,8 +24,8 @@ namespace OnionBlogProject.Application.Models.Dtos.AuthorDto
         public string LastName { get; set; }
 
         [PictureFileExtension]
-        public IFormFile UploadPath { get; set; }
-        public string ImagePath { get; set; }
+        public IFormFile? UploadPath { get; set; }
+        public string? ImagePath { get; set; }
         public DateTime CreateDate => DateTime.Now;
         public Status Status => Status.Active;
     }

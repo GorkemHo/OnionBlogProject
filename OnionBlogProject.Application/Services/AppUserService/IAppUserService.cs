@@ -16,5 +16,7 @@ namespace OnionBlogProject.Application.Services.AppUserService
         Task Logout();
         Task UpdateUser(UpdateProfileDto model);
         Task<UpdateProfileDto> GetByUserName(string userName);
+
+        Task<bool> UserInRole(string userName, string role);
     }
 }
