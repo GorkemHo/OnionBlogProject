@@ -15,6 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/media/dist/css/adminlte.min.css">
+    <!-- Summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -24,10 +26,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Left navbar links -->
             <ul class="navbar-nav col-10">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-area="Admin" asp-controller="Author" asp-action="Index" class="nav-link">Home</a>
+                    <a asp-area="Admin" asp-controller="Author" asp-action="Index" class="nav-link">Author</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="nav-link">Genre</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a asp-area="Admin" asp-controller="Genre" asp-action="Index" class="nav-link">Genre</a>
                 </li>
             </ul>
             <ul class="navbar-nav col-2">
@@ -64,6 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="container-fluid">
 
+                    <partial name="_NotificationPartial" />
                     @RenderBody()
 
                     <!-- /.row -->
@@ -85,10 +91,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="~/~/media/~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="~/~/media/~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/media/dist/js/adminlte.min.js"></script>
+    <!-- Summernote App -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    @RenderSection("SummerNote", required: false)
+
+    @*<script>
+            $(function(){
+                $('#summernote').summernote();
+            })
+        </script>*@
 </body>
 </html>

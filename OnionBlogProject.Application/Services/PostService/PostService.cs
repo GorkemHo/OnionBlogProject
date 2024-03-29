@@ -54,24 +54,47 @@ namespace OnionBlogProject.Application.Services.PostService
 
         public async Task<CreatePostDto> CreatePost()
         {
+            //CreatePostDto model = new CreatePostDto()
+            //{
+            //    Genres = await _genreRepo.GetFilteredList(
+            //        select: x => new GenreVm
+            //        {
+            //            Id = x.Id,
+            //            Name = x.Name,
+            //        }, where: x => x.Status != Status.Passive,
+            //        orderby: x => x.OrderBy(x => x.Name)),
+
+            //    Authors = await _authorRepo.GetFilteredList(
+            //        select: x => new AuthorVm
+            //        {
+            //            Id = x.Id,
+            //            FirstName = x.FirstName,
+            //            LastName = x.LastName,
+            //        }, where: x => x.Status != Status.Passive,
+            //        orderby: x => x.OrderBy(x => x.FirstName)),
+            //};
+
+            //return model;
+
             CreatePostDto model = new CreatePostDto()
             {
                 Genres = await _genreRepo.GetFilteredList(
-                    select: x => new GenreVm
-                    {
-                        Id = x.Id,
-                        Name = x.Name,
-                    }, where: x => x.Status != Status.Passive,
-                    orderby: x => x.OrderBy(x => x.Name)),
-
+           select: x => new GenreVm
+           {
+               Id = x.Id,
+               Name = x.Name,
+           },
+           where: x => x.Status != Status.Passive,
+           orderby: x => x.OrderBy(x => x.Name)),
                 Authors = await _authorRepo.GetFilteredList(
-                    select: x => new AuthorVm
-                    {
-                        Id = x.Id,
-                        FirstName = x.FirstName,
-                        LastName = x.LastName,
-                    }, where: x => x.Status != Status.Passive,
-                    orderby: x => x.OrderBy(x => x.FirstName)),
+           select: x => new AuthorVm
+           {
+               Id = x.Id,
+               FirstName = x.FirstName,
+               LastName = x.LastName,
+           },
+           where: x => x.Status != Status.Passive,
+           orderby: x => x.OrderBy(x => x.FirstName))
             };
 
             return model;

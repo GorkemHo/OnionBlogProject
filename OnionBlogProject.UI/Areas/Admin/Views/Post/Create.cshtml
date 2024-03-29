@@ -1,0 +1,74 @@
+﻿@model OnionBlogProject.Application.Models.Dtos.PostDto.CreatePostDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>CreatePostDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" id="summernote"></textarea>
+                @*<input asp-for="Content" class="form-control" />*@
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadPath" class="form-label">Görsel Seç</label>
+                <input asp-for="UploadPath" id="UploadPath" type="file" class="form-control" />
+                <span asp-validation-for="UploadPath" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="ImagePath" class="control-label"></label>
+                    <input asp-for="ImagePath" class="form-control" />
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="AuthorId" class="control-label"></label>
+                <select asp-for="AuthorId" class="form-control">
+                    @foreach (var item in Model.Authors)
+                    {
+                        <option value="@item.Id">@item.FirstName @item.LastName</option>
+                    }
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenreId" class="control-label"></label>
+                <select asp-for="GenreId" class="form-control">
+                    @foreach (var item in Model.Genres)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section SummerNote{ 
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote();
+        });
+    </script>
+}

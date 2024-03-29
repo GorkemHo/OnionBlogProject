@@ -22,7 +22,7 @@ namespace OnionBlogProject.Application.Models.Dtos.PostDto
         [Required(ErrorMessage = "Gönderi Başlığı Boş Bırakılamaz.")]
         [MinLength(3, ErrorMessage = "Gönderi Başlığı en az 3 harften oluşmalıdır.")]
         public string Content { get; set; }
-        public string ImagePath { get; set; }
+        
 
         [PictureFileExtension]
         public IFormFile UploadPath { get; set; }
